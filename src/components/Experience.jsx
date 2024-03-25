@@ -103,7 +103,7 @@ const Experience = () => {
               onClick={() => {
                 try {
                   window.open(
-                    './src/components/files/CVTheauYapi.pdf', //paste the link to your resume here
+                    'https://github.com/LeYapson/portfolio/blob/main/src/components/files/CVTheauYapi.pdf', //paste the link to your resume here
                     '_blank'
                   );
                 } catch (error) {
