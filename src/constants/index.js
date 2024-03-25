@@ -226,7 +226,7 @@ const projects = [
       },
     ],
     image: movie,
-    repo: './src/components/files/StageElife.pdf',
+    repo: 'https://github.com/LeYapson/portfolio/blob/main/src/components/files/StageElife.pdf',
   },
 ];
 

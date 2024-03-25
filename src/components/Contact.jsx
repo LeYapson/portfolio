@@ -103,7 +103,7 @@ const Contact = () => {
           </label>
           <label className="flex flex-col">
             <span className="text-timberWolf font-medium mb-4">
-              Your Message
+              Ton message
             </span>
             <textarea
               rows="7"
