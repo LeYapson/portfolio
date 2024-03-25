@@ -125,14 +125,14 @@ const experiences = [
     company_name: 'Montpellier Ynov Campus',
     icon: microverse,
     iconBg: '#333333',
-    date: 'Feb 2024 - Present',
+    date: 'Fev 2024 - Aujourd\'hui',
   },
   {
     title: 'Developpeur Web front-end',
     company_name: 'Essential Life Services',
     icon: coverhunt,
     iconBg: '#333333',
-    date: 'Aug 2023 - Sep 2023',
+    date: 'Aou 2023 - Sep 2023',
   },
   {
     title: 'Licence informatique',

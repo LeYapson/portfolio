@@ -43,7 +43,7 @@ const Contact = () => {
       .then(
         () => {
           setLoading(false);
-          alert('Thank you. I will get back to you as soon as possible.');
+          alert('Merci, je reviens vers vous dès que possible.');
 
           setForm({
             name: '',
@@ -54,7 +54,7 @@ const Contact = () => {
         (error) => {
           setLoading(false);
           console.log(error);
-          alert('Something went wrong. Please try again.');
+          alert('Quelque chose s\'est mal passé, veuillez réessayer.');
         }
       );
   };
@@ -80,7 +80,7 @@ const Contact = () => {
               name="name"
               value={form.name}
               onChange={handleChange}
-              placeholder="What's your name?"
+              placeholder="Quel est ton nom?"
               className="bg-eerieBlack py-4 px-6
               placeholder:text-taupe
               text-timberWolf rounded-lg outline-none
@@ -94,7 +94,7 @@ const Contact = () => {
               name="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="What's your email?"
+              placeholder="c'est quoi ton e-mail?"
               className="bg-eerieBlack py-4 px-6
               placeholder:text-taupe
               text-timberWolf rounded-lg outline-none
@@ -110,7 +110,7 @@ const Contact = () => {
               name="message"
               value={form.message}
               onChange={handleChange}
-              placeholder="What's your message?"
+              placeholder="Quel est ton message?"
               className="bg-eerieBlack py-4 px-6
               placeholder:text-taupe
               text-timberWolf rounded-lg outline-none
