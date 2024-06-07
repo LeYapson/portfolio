@@ -40,7 +40,7 @@ import coverhunt from './company/elifes.png';
 import kelhel from './company/logo-um.png';
 import microverse from './company/myc.png';
 
-import komikult from './projects/CarWithAgun.jpg';
+import komikult from './projects/CarWithAGun.jpg';
 import pascal from './projects/pascal.jpg';
 import leaderboard from './projects/abdelrun.jpg';
 import math from './projects/forynov.jpg';
