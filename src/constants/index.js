@@ -24,6 +24,7 @@ import {
   kelhel,
   microverse,
   movie,
+  pascal,
 } from '../assets';
 
 export const navLinks = [
@@ -153,23 +154,40 @@ const experiences = [
 const projects = [
   {
     id: 'project-1',
-    name: 'Y FIghter',
-    description: 'Un jeu de combat en 3D construit avec unity et C#.',
+    name: 'Car With A Gun',
+    description: 'Un jeu top-down shooter construit avec godot et gdscript.',
     tags: [
       {
-        name: 'unity',
+        name: 'godot',
         color: 'blue-text-gradient',
       },
       {
-        name: 'csharp',
+        name: 'gdscript',
         color: 'green-text-gradient',
       },
     ],
     image: komikult,
-    repo: 'https://github.com/LeYapson/YFIGHTER-Unity',
+    repo: 'https://github.com/LeYapson/Car_With_A_Gun',
   },
   {
     id: 'project-2',
+    name: 'Pascal BOT',
+    description: 'Un bot discord de modération et de quiz construit avec python et discord.py.',
+    tags: [
+      {
+        name: 'python',
+        color: 'blue-text-gradient',
+      },
+      {
+        name: 'discord',
+        color: 'green-text-gradient',
+      },
+    ],
+    image: pascal,
+    repo: 'https://github.com/LeYapson/PASCAL_BOT_V1.0',
+  },
+  {
+    id: 'project-3',
     name: 'Abdel Run',
     description:
       'Un jeu de défilement infini construit avec golang et raylib-go.',
@@ -187,7 +205,7 @@ const projects = [
     repo: 'https://github.com/LeYapson/Abdel_Run',
   },
   {
-    id: 'project-3',
+    id: 'project-4',
     name: 'Forynov',
     description: 'Il s\'agit d\'un site de forum construit avec golang, SqLite et bootstrap.',
     tags: [
@@ -208,7 +226,7 @@ const projects = [
     repo: 'https://github.com/LeYapson/forynov',
   },
   {
-    id: 'project-4',
+    id: 'project-5',
     name: 'Elifes',
     description: 'stage de développement web pour la refonte graphique du site web de l\'entreprise',
     tags: [

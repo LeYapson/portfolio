@@ -16,8 +16,6 @@ import github from './icons/github.png';
 import close from './icons/close.png';
 import download from './icons/download.png';
 import downloadHover from './icons/downloadHover.png';
-import pineapple from './icons/pineapple.png';
-import pineappleHover from './icons/pineappleHover.png';
 import menu from './icons/menu.png';
 import resume from './icons/resume.png';
 import send from './icons/send.png';
@@ -39,16 +37,14 @@ import postgresql from './tech/python.png';
 import rubyrails from './tech/csharp.png';
 
 import coverhunt from './company/elifes.png';
-import dcc from './company/dcc.png';
 import kelhel from './company/logo-um.png';
 import microverse from './company/myc.png';
 
-import komikult from './projects/yfighter.jpg';
+import komikult from './projects/CarWithAgun.jpg';
+import pascal from './projects/pascal.jpg';
 import leaderboard from './projects/abdelrun.jpg';
 import math from './projects/forynov.jpg';
 import movie from './projects/elife.jpg';
-import nyeusi from './projects/nyeusi.png';
-import space from './projects/space-hub.png';
 
 export {
   bwmap,
@@ -66,8 +62,6 @@ export {
   close,
   download,
   downloadHover,
-  pineapple,
-  pineappleHover,
   menu,
   resume,
   send,
@@ -90,10 +84,8 @@ export {
   leaderboard,
   math,
   movie,
-  nyeusi,
-  space,
   coverhunt,
-  dcc,
   kelhel,
   microverse,
+  pascal,
 };
