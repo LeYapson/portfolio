@@ -39,12 +39,14 @@ import rubyrails from './tech/csharp.png';
 import coverhunt from './company/elifes.png';
 import kelhel from './company/logo-um.png';
 import microverse from './company/myc.png';
+import ivalua from './company/ivalua-logo-vector.svg';
 
 import komikult from './projects/CarWithAGun.jpg';
 import pascal from './projects/pascal.jpg';
 import leaderboard from './projects/abdelrun.jpg';
 import math from './projects/forynov.jpg';
 import movie from './projects/elife.jpg';
+
 
 export {
   bwmap,
@@ -88,4 +90,5 @@ export {
   kelhel,
   microverse,
   pascal,
+  ivalua,
 };

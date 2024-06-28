@@ -25,6 +25,7 @@ import {
   microverse,
   movie,
   pascal,
+  ivalua,
 } from '../assets';
 
 export const navLinks = [
@@ -122,11 +123,18 @@ const technologies = [
 
 const experiences = [
   {
+    title: 'Ingénieur Études et Développement spécialisé en C#, .NET, et SQL Server.',
+    company_name: 'Ivalua',
+    icon: ivalua,
+    iconBg: '#333333',
+    date: 'Oct 2024 - Jul 2027',
+  },
+  {
     title: 'mentor junior Informatique',
     company_name: 'Montpellier Ynov Campus',
     icon: microverse,
     iconBg: '#333333',
-    date: 'Fev 2024 - Aujourd\'hui',
+    date: 'Fev 2024 - Jun 2024',
   },
   {
     title: 'Developpeur Web front-end',
