@@ -127,7 +127,7 @@ const experiences = [
     company_name: 'Ivalua',
     icon: ivalua,
     iconBg: '#333333',
-    date: 'Oct 2024 - Jul 2027',
+    date: 'Jun 2024 - Aujourd\'hui',
   },
   {
     title: 'mentor junior Informatique',
