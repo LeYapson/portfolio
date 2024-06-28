@@ -39,7 +39,7 @@ import rubyrails from './tech/csharp.png';
 import coverhunt from './company/elifes.png';
 import kelhel from './company/logo-um.png';
 import microverse from './company/myc.png';
-import ivalua from './company/ivalua-logo-White-1-1-1.web';
+import ivalua from './company/ivalua-logo-White-1-1-1.webp';
 
 import komikult from './projects/CarWithAGun.jpg';
 import pascal from './projects/pascal.jpg';
