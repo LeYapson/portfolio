@@ -135,7 +135,7 @@ const Contact = () => {
           <img
             src={linkedinIcon} // Assurez-vous d'importer votre icône LinkedIn
             alt="LinkedIn"
-            className="w-10 h-10 object-contain"
+            className="w-20 h-20 object-contain"
           />
         </a>
       </div>
