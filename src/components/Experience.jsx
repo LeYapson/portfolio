@@ -59,11 +59,13 @@ const ExperienceCard = ({ experience, onOpenModal }) => (
         />
       </div>
     }
-    // Ajout d'une fonction pour ouvrir le modal
-    onClick={() => onOpenModal(experience.title, experience.company_name, experience.description)}
   >
     <div>
-      <h3 className="text-jetLight text-[24px] font-bold font-beckman tracking-[2px]">
+      {/* Titre cliquable */}
+      <h3
+        className="text-jetLight text-[24px] font-bold font-beckman tracking-[2px] cursor-pointer"
+        onClick={() => onOpenModal(experience.title, experience.company_name, experience.description)} // Ajout de l'événement onClick ici
+      >
         {experience.title}
       </h3>
       <p
