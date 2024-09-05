@@ -56,10 +56,10 @@ const Experience = () => {
     <>
       <motion.div variants={textVariant()}>
         <p className={`${styles.sectionSubText} sm:pl-16 pl-[2rem]`}>
-          What I've done so far
+        Ce que j'ai fait jusqu'à présent
         </p>
         <h2 className={`${styles.sectionHeadText} sm:pl-16 pl-[2rem]`}>
-          Work Experience.
+        Expérience professionnelle.
         </h2>
       </motion.div>
 
@@ -103,7 +103,7 @@ const Experience = () => {
               onClick={() => {
                 try {
                   window.open(
-                    './src/components/files/CVTheauYapi.pdf', //paste the link to your resume here
+                    'https://github.com/LeYapson/portfolio/blob/main/src/components/files/CVTheauYapi.pdf', //paste the link to your resume here
                     '_blank'
                   );
                 } catch (error) {

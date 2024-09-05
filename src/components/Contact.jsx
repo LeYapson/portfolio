@@ -43,7 +43,7 @@ const Contact = () => {
       .then(
         () => {
           setLoading(false);
-          alert('Thank you. I will get back to you as soon as possible.');
+          alert('Merci, je reviens vers vous dès que possible.');
 
           setForm({
             name: '',
@@ -54,7 +54,7 @@ const Contact = () => {
         (error) => {
           setLoading(false);
           console.log(error);
-          alert('Something went wrong. Please try again.');
+          alert('Quelque chose s\'est mal passé, veuillez réessayer.');
         }
       );
   };
@@ -66,7 +66,7 @@ const Contact = () => {
       <motion.div
         variants={slideIn('left', 'tween', 0.2, 1)}
         className="flex-[0.75] bg-jet p-8 rounded-2xl">
-        <p className={styles.sectionSubText}>Get in touch</p>
+        <p className={styles.sectionSubText}>Prendre contact</p>
         <h3 className={styles.sectionHeadTextLight}>Contact.</h3>
 
         <form
@@ -74,13 +74,13 @@ const Contact = () => {
           onSubmit={handleSubmit}
           className="mt-10 flex flex-col gap-6 font-poppins">
           <label className="flex flex-col">
-            <span className="text-timberWolf font-medium mb-4">Your Name</span>
+            <span className="text-timberWolf font-medium mb-4">Ton nom</span>
             <input
               type="text"
               name="name"
               value={form.name}
               onChange={handleChange}
-              placeholder="What's your name?"
+              placeholder="Quel est ton nom?"
               className="bg-eerieBlack py-4 px-6
               placeholder:text-taupe
               text-timberWolf rounded-lg outline-none
@@ -88,13 +88,13 @@ const Contact = () => {
             />
           </label>
           <label className="flex flex-col">
-            <span className="text-timberWolf font-medium mb-4">Your Email</span>
+            <span className="text-timberWolf font-medium mb-4">Ton e-mail</span>
             <input
               type="email"
               name="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="What's your email?"
+              placeholder="c'est quoi ton e-mail?"
               className="bg-eerieBlack py-4 px-6
               placeholder:text-taupe
               text-timberWolf rounded-lg outline-none
@@ -103,14 +103,14 @@ const Contact = () => {
           </label>
           <label className="flex flex-col">
             <span className="text-timberWolf font-medium mb-4">
-              Your Message
+              Ton message
             </span>
             <textarea
               rows="7"
               name="message"
               value={form.message}
               onChange={handleChange}
-              placeholder="What's your message?"
+              placeholder="Quel est ton message?"
               className="bg-eerieBlack py-4 px-6
               placeholder:text-taupe
               text-timberWolf rounded-lg outline-none
