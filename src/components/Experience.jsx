@@ -73,10 +73,6 @@ const ExperienceCard = ({ experience, onOpenModal }) => (
         style={{ margin: 0 }}>
         {experience.company_name}
       </p>
-      <div
-        className="text-taupe text-[16px] font-poppins mt-2"
-        dangerouslySetInnerHTML={{ __html: experience.description }}
-      />
     </div>
   </VerticalTimelineElement>
 );
