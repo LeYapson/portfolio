@@ -4,7 +4,7 @@ import emailjs from '@emailjs/browser';
 import { styles } from '../styles';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
-import { send, sendHover, linkedinIcon } from '../assets/logo'; // Ajoutez votre icône LinkedIn ici
+import { send, sendHover, linkedinIcon } from '../assets'; // Ajoutez votre icône LinkedIn ici
 
 const Contact = () => {
   const formRef = useRef();
