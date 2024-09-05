@@ -132,7 +132,7 @@ const experiences = [
     icon: ivalua,
     iconBg: '#333333',
     date: 'Jun 2024 - Aujourd\'hui',
-    description: 'Poste actuelle, je n\'ai pas encore commencé mon alternance mais je me suis rendu au pot d\'accueil organisé pour les futurs alternants et j\'ai pu constater que l\'équipe est vraiment adorable.\n Ivalua est une entreprise française spécialisée dans les solutions de gestion des achats et des dépenses pour les grandes entreprises. Fondée en 2000, elle propose une plateforme logicielle complète qui aide les organisations à optimiser leurs processus d\'achats, de la gestion des fournisseurs à la facturation. Ivalua est reconnue pour sa flexibilité, permettant aux entreprises de personnaliser leurs solutions en fonction de leurs besoins spécifiques. Elle compte parmi ses clients de grandes multinationales dans divers secteurs, comme l\'automobile, la finance et la technologie.',
+    description: 'Poste actuelle, je n\'ai pas encore commencé mon alternance mais je me suis rendu au pot d\'accueil organisé pour les futurs alternants et j\'ai pu constater que l\'équipe est vraiment adorable.<br /><br />Ivalua est une entreprise française spécialisée dans les solutions de gestion des achats et des dépenses pour les grandes entreprises. Fondée en 2000, elle propose une plateforme logicielle complète qui aide les organisations à optimiser leurs processus d\'achats, de la gestion des fournisseurs à la facturation. Ivalua est reconnue pour sa flexibilité, permettant aux entreprises de personnaliser leurs solutions en fonction de leurs besoins spécifiques. Elle compte parmi ses clients de grandes multinationales dans divers secteurs, comme l\'automobile, la finance et la technologie.',
   },
   {
     title: 'mentor junior Informatique',
