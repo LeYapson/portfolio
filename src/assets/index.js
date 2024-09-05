@@ -46,6 +46,7 @@ import pascal from './projects/pascal.jpg';
 import leaderboard from './projects/abdelrun.jpg';
 import math from './projects/forynov.jpg';
 import movie from './projects/elife.jpg';
+import linkedinIcon from './logo/linkedin.avif';
 
 
 export {
@@ -91,4 +92,5 @@ export {
   microverse,
   pascal,
   ivalua,
+  linkedinIcon,
 };
