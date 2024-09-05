@@ -132,6 +132,7 @@ const experiences = [
     icon: ivalua,
     iconBg: '#333333',
     date: 'Jun 2024 - Aujourd\'hui',
+    description: 'Poste actuelle, je n\'ai pas encore commencé mmon alternance mais je me suis rendu au pot d\' accueil organisé pour les futurs alternants et j\'ai pu constater que l\'équipe est vraiment adorable.',
   },
   {
     title: 'mentor junior Informatique',

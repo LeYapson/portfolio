@@ -21,7 +21,7 @@ const Modal = ({ isOpen, onClose, title, company_name, description }) => {
       <div className="bg-white rounded-lg p-8 relative z-10 w-[90%] max-w-md">
         <h2 className="text-2xl font-bold mb-4">{title}</h2>
         <h3 className="text-lg font-semibold mb-2">{company_name}</h3>
-        <p className="text-gray-700 mb-6">{description}</p>
+        <p className="text-gray-700 mb-6">{description}</p> {/* Affiche la description */}
         <button onClick={onClose} className="bg-red-500 text-white py-2 px-4 rounded">
           Fermer
         </button>
@@ -29,6 +29,7 @@ const Modal = ({ isOpen, onClose, title, company_name, description }) => {
     </div>
   );
 };
+
 
 const ExperienceCard = ({ experience, openModal }) => (
   <VerticalTimelineElement
