@@ -140,6 +140,7 @@ const experiences = [
     icon: microverse,
     iconBg: '#333333',
     date: 'Fev 2024 - Jun 2024',
+    description : 'De la période de Février a Juin, j\'ai été mentor junior en informatique à Montpellier Ynov Campus. J\'ai aidé les étudiants à résoudre des problèmes de programmation, à comprendre les concepts de base de la programmation et à améliorer leurs compétences en développement web. J\'ai également organisé des ateliers et des séances de tutorat pour les étudiants qui avaient besoin d\'aide supplémentaire. C\'était une expérience enrichissante qui m\'a permis de partager mes connaissances et d\'aider les autres à réussir dans le domaine de l\'informatique.',
   },
   {
     title: 'Developpeur Web front-end',
@@ -147,6 +148,7 @@ const experiences = [
     icon: coverhunt,
     iconBg: '#333333',
     date: 'Aou 2023 - Sep 2023',
+    description: 'Durant l\'été de ma première année de bachelor, j\'ai effectué un stage de développement web chez Essential Life Services, une entreprise ivoirienne spécialisée dans les services de d\'hôtellerie et de restauration sur plateforme pétrolière. J\'ai travaillé sur la refonte graphique de leur site web, en utilisant des technologies comme HTML, CSS et Bootstrap. J\'ai également aidé à la création de nouvelles fonctionnalités et à l\'optimisation des performances du site. Ce stage m\'a permis d\'acquérir de l\'expérience dans le développement web et de mettre en pratique mes compétences en programmation.',
   },
   {
     title: 'Licence informatique',
@@ -154,6 +156,7 @@ const experiences = [
     icon: microverse,
     iconBg: '#333333',
     date: 'Sep 2022 - Aujourd\'hui',
+    description : 'Ma formation actuelle. Durant mes deux premières années, j\'ai acquis des compétences en développement web et en développement logiciel, en utilisant des technologies comme HTML, CSS, JavaScript, React, Node.js, et SQL. J\'ai également appris les principes de la programmation orientée objet, de la conception de bases de données, et de la gestion de projets informatiques. J\'ai travaillé sur plusieurs projets individuels et en équipe, ce qui m\'a permis de développer mes compétences en programmation et de me familiariser avec les bonnes pratiques de développement logiciel.',
   },
   {
     title: 'Licence en électronique, électrotechnique et automatisation',
@@ -161,6 +164,7 @@ const experiences = [
     icon: kelhel,
     iconBg: '#333333',
     date: 'Sep 2020 - Jul 2022',
+    description : 'J\'ai effectué mes deux premières années dans le supérieur à l\'université des sciences de Montpellier. J\'ai étudié l\'électronique, l\'électrotechnique et l\'automatisation, en apprenant les principes de base de l\'électricité, de l\'électronique, et de l\'automatisation. J\'ai malheuresement échoué deux fois de suite ma première année mais j\'ai pu me constituer une base solide pour la suite de mes études notamment grâce aux cours d\'algorithmique et de programmation et et de programmation impérative que j\'ai pu suivre.',
   },
 ];
 
