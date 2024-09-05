@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {
   VerticalTimeline,
   VerticalTimelineElement,
@@ -10,7 +11,26 @@ import { SectionWrapper } from '../hoc';
 import { download, downloadHover, resume } from '../assets';
 import { textVariant } from '../utils/motion';
 
-const ExperienceCard = ({ experience }) => (
+// Composant Modal pour afficher les détails des missions
+const Modal = ({ isOpen, onClose, title, company_name, description }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 flex justify-center items-center">
+      <div className="absolute inset-0 bg-black opacity-50" onClick={onClose}></div>
+      <div className="bg-white rounded-lg p-8 relative z-10 w-[90%] max-w-md">
+        <h2 className="text-2xl font-bold mb-4">{title}</h2>
+        <h3 className="text-lg font-semibold mb-2">{company_name}</h3>
+        <p className="text-gray-700 mb-6">{description}</p>
+        <button onClick={onClose} className="bg-red-500 text-white py-2 px-4 rounded">
+          Fermer
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const ExperienceCard = ({ experience, openModal }) => (
   <VerticalTimelineElement
     contentStyle={{
       background: '#eaeaec',
@@ -39,7 +59,10 @@ const ExperienceCard = ({ experience }) => (
       </div>
     }>
     <div>
-      <h3 className="text-jetLight text-[24px] font-bold font-beckman tracking-[2px]">
+      <h3
+        className="text-jetLight text-[24px] font-bold font-beckman tracking-[2px] cursor-pointer"
+        onClick={() => openModal(experience)}
+      >
         {experience.title}
       </h3>
       <p
@@ -52,22 +75,41 @@ const ExperienceCard = ({ experience }) => (
 );
 
 const Experience = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedExperience, setSelectedExperience] = useState(null);
+
+  const openModal = (experience) => {
+    setSelectedExperience(experience);
+    setIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+    setSelectedExperience(null);
+  };
+
   return (
     <>
       <motion.div variants={textVariant()}>
         <p className={`${styles.sectionSubText} sm:pl-16 pl-[2rem]`}>
-        Ce que j'ai fait jusqu'à présent
+          Ce que j'ai fait jusqu'à présent
         </p>
         <h2 className={`${styles.sectionHeadText} sm:pl-16 pl-[2rem]`}>
-        Expérience professionnelle.
+          Expérience professionnelle.
         </h2>
       </motion.div>
 
       <div className="mt-20 flex flex-col">
         <VerticalTimeline className="vertical-timeline-custom-line">
           {experiences.map((experience, index) => (
-            <ExperienceCard key={index} experience={experience} />
+            <ExperienceCard
+              key={index}
+              experience={experience}
+              openModal={openModal}
+            />
           ))}
+
+          {/* Bouton pour télécharger le CV */}
           <VerticalTimelineElement
             contentStyle={{
               background: '#eaeaec',
@@ -103,7 +145,7 @@ const Experience = () => {
               onClick={() => {
                 try {
                   window.open(
-                    'https://github.com/LeYapson/portfolio/blob/main/src/components/files/CVTheauYapi.pdf', //paste the link to your resume here
+                    'https://github.com/LeYapson/portfolio/blob/main/src/components/files/CVTheauYapi.pdf',
                     '_blank'
                   );
                 } catch (error) {
@@ -131,6 +173,17 @@ const Experience = () => {
             </button>
           </VerticalTimelineElement>
         </VerticalTimeline>
+
+        {/* Modal */}
+        {selectedExperience && (
+          <Modal
+            isOpen={isOpen}
+            onClose={closeModal}
+            title={selectedExperience.title}
+            company_name={selectedExperience.company_name}
+            description={`Missions réalisées chez ${selectedExperience.company_name}.`} // Ajoute les missions spécifiques ici
+          />
+        )}
       </div>
     </>
   );
