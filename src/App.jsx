@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { Navbar, Hero, Loader } from './components';
+import { Navbar, Hero } from './components';
+import Loader from './components/Loader'; // Importation directe
 
 // Chargement paresseux des composants moins critiques
 const About = lazy(() => import('./components/About'));
