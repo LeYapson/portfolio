@@ -11,41 +11,6 @@ import { SectionWrapper } from '../hoc';
 import { download, downloadHover, resume } from '../assets';
 import { textVariant } from '../utils/motion';
 
-// Modal component
-const Modal = ({ isOpen, onClose, title, company_name, description }) => {
-  if (!isOpen) return null;
-
-  return (
-    <div className="fixed inset-0 z-50 flex justify-center items-center">
-      <div className="absolute inset-0 bg-black opacity-50" onClick={onClose}></div>
-      <div className="bg-white rounded-lg p-8 relative z-10 w-[90%] max-w-2xl max-h-[80vh] overflow-y-auto">
-        <div className="flex justify-between items-center mb-4">
-          <h2 className="text-2xl font-bold text-jetLight">{title}</h2>
-          <button 
-            onClick={onClose} 
-            className="text-gray-500 hover:text-gray-700"
-            aria-label="Fermer"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-        <h3 className="text-lg font-semibold mb-3 text-dim">{company_name}</h3>
-        <p className="text-gray-700 whitespace-pre-line">{description}</p>
-        <div className="mt-6 flex justify-end">
-          <button 
-            onClick={onClose} 
-            className="bg-jetLight text-white py-2 px-4 rounded hover:bg-battleGray transition duration-300"
-          >
-            Fermer
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 // Experience card component
 const ExperienceCard = ({ experience, onOpenModal }) => (
   <VerticalTimelineElement
@@ -77,11 +42,7 @@ const ExperienceCard = ({ experience, onOpenModal }) => (
     }
   >
     <div>
-      {/* Titre cliquable */}
-      <h3
-        className="text-jetLight text-[24px] font-bold font-beckman tracking-[2px] cursor-pointer"
-        onClick={() => onOpenModal(experience.title, experience.company_name, experience.description)} // Ajout de l'événement onClick ici
-      >
+      <h3 className="text-jetLight text-[24px] font-bold font-beckman tracking-[2px]">
         {experience.title}
       </h3>
       <p
@@ -89,9 +50,73 @@ const ExperienceCard = ({ experience, onOpenModal }) => (
         style={{ margin: 0 }}>
         {experience.company_name}
       </p>
+      
+      {/* Points clés de l'expérience (optionnel) */}
+      <ul className="mt-3 list-disc ml-5 space-y-2">
+        {experience.points && experience.points.slice(0, 2).map((point, index) => (
+          <li key={`experience-point-${index}`} className="text-jetLight text-[14px] pl-1 tracking-wider">
+            {point}
+          </li>
+        ))}
+      </ul>
+      
+      {/* Bouton explicite pour voir les détails */}
+      <button 
+        onClick={() => onOpenModal(experience.title, experience.company_name, experience.description)}
+        className="mt-4 flex items-center gap-2 px-3 py-2 bg-jetLight text-white rounded-md hover:bg-battleGray transition duration-300 text-sm"
+        aria-label={`Voir les détails de ${experience.title}`}
+      >
+        <span>Voir les détails</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2z"/>
+        </svg>
+      </button>
     </div>
   </VerticalTimelineElement>
 );
+
+// Modal component amélioré
+const Modal = ({ isOpen, onClose, title, company_name, description }) => {
+  if (!isOpen) return null;
+
+  // Animation et overlay améliorés
+  return (
+    <div className="fixed inset-0 z-50 flex justify-center items-center transition-opacity duration-300">
+      <div className="absolute inset-0 bg-black bg-opacity-70" onClick={onClose}></div>
+      <div className="relative bg-white dark:bg-slate-800 rounded-lg shadow-2xl p-8 w-[90%] max-w-2xl max-h-[80vh] overflow-y-auto animate-modal-appear">
+        <div className="absolute top-4 right-4">
+          <button 
+            onClick={onClose} 
+            className="p-2 rounded-full bg-gray-100 hover:bg-gray-200 dark:bg-slate-700 dark:hover:bg-slate-600 transition-colors"
+            aria-label="Fermer"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-500 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        
+        <div className="mb-6 border-l-4 border-jetLight pl-4">
+          <h2 className="text-3xl font-bold text-jetLight dark:text-white">{title}</h2>
+          <h3 className="text-xl font-semibold text-dim dark:text-gray-300 mt-1">{company_name}</h3>
+        </div>
+        
+        <div className="prose prose-lg dark:prose-invert max-w-none">
+          <p className="whitespace-pre-line">{description}</p>
+        </div>
+        
+        <div className="mt-8 flex justify-end">
+          <button 
+            onClick={onClose} 
+            className="bg-jetLight text-white py-2 px-6 rounded-md hover:bg-battleGray transition-colors duration-300 flex items-center gap-2"
+          >
+            <span>Fermer</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 // Main Experience component
 const Experience = () => {

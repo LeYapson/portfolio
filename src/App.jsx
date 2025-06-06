@@ -1,10 +1,9 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { Navbar, Hero } from './components';
-import Loader from './components/Loader'; // Importation directe
+import { Navbar, Hero, About } from './components';
+import LoaderFallback from './components/LoaderFallback'; // Importation du nouveau composant
 
 // Chargement paresseux des composants moins critiques
-const About = lazy(() => import('./components/About'));
 const Tech = lazy(() => import('./components/Tech'));
 const Projects = lazy(() => import('./components/Projects'));
 const Experience = lazy(() => import('./components/Experience'));
@@ -19,11 +18,11 @@ const App = () => {
           <Hero />
         </div>
         
-        <Suspense fallback={<div className="flex justify-center items-center min-h-[50vh]"><Loader /></div>}>
-          <div className="bg-about bg-cover bg-center bg-no-repeat">
-            <About />
-          </div>
+        <div className="bg-about bg-cover bg-center bg-no-repeat">
+          <About />
+        </div>
 
+        <Suspense fallback={<LoaderFallback />}>
           <div className="bg-tech bg-cover bg-center bg-no-repeat pb-10">
             <Tech />
           </div>
