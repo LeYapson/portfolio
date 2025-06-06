@@ -24,10 +24,25 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
 
+    // Ajout de validation
+    if (!form.name || !form.email || !form.message) {
+      alert('Veuillez remplir tous les champs');
+      setLoading(false);
+      return;
+    }
+
+    // Validation email basique
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(form.email)) {
+      alert('Veuillez entrer une adresse email valide');
+      setLoading(false);
+      return;
+    }
+
     emailjs
       .send(
-        'service_0gray19',
-        'template_5zix17c',
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
           from_name: form.name,
           to_name: 'Théau Yapi',
@@ -35,7 +50,7 @@ const Contact = () => {
           to_email: 'theau2002@live.fr',
           message: form.message,
         },
-        '-sHX4D7Usk3V6zpEv'
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(
         () => {

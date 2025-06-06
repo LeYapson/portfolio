@@ -18,13 +18,29 @@ const Modal = ({ isOpen, onClose, title, company_name, description }) => {
   return (
     <div className="fixed inset-0 z-50 flex justify-center items-center">
       <div className="absolute inset-0 bg-black opacity-50" onClick={onClose}></div>
-      <div className="bg-white rounded-lg p-8 relative z-10 w-[90%] max-w-md">
-        <h2 className="text-2xl font-bold mb-4">{title}</h2>
-        <h3 className="text-lg font-semibold mb-2">{company_name}</h3>
-        <p className="text-gray-700 mb-6">{description}</p> {/* Affiche la description */}
-        <button onClick={onClose} className="bg-red-500 text-white py-2 px-4 rounded">
-          Fermer
-        </button>
+      <div className="bg-white rounded-lg p-8 relative z-10 w-[90%] max-w-2xl max-h-[80vh] overflow-y-auto">
+        <div className="flex justify-between items-center mb-4">
+          <h2 className="text-2xl font-bold text-jetLight">{title}</h2>
+          <button 
+            onClick={onClose} 
+            className="text-gray-500 hover:text-gray-700"
+            aria-label="Fermer"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <h3 className="text-lg font-semibold mb-3 text-dim">{company_name}</h3>
+        <p className="text-gray-700 whitespace-pre-line">{description}</p>
+        <div className="mt-6 flex justify-end">
+          <button 
+            onClick={onClose} 
+            className="bg-jetLight text-white py-2 px-4 rounded hover:bg-battleGray transition duration-300"
+          >
+            Fermer
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -85,6 +101,7 @@ const Experience = () => {
     company_name: '',
     description: '',
   });
+  const [loadingResume, setLoadingResume] = useState(false);
 
   const openModal = (title, company_name, description) => {
     setModalData({ title, company_name, description });
@@ -149,12 +166,15 @@ const Experience = () => {
               ease-in-out"
               onClick={() => {
                 try {
+                  setLoadingResume(true);
                   window.open(
-                    'https://github.com/LeYapson/portfolio/blob/main/src/components/files/CVTheauYapi.pdf', //paste the link to your resume here
+                    'https://github.com/LeYapson/portfolio/blob/main/src/components/files/CVTheauYapi.pdf',
                     '_blank'
                   );
+                  setTimeout(() => setLoadingResume(false), 1000);
                 } catch (error) {
                   console.error('Error opening resume:', error);
+                  setLoadingResume(false);
                 }
               }}
               
@@ -168,7 +188,7 @@ const Experience = () => {
                   .querySelector('.download-btn')
                   .setAttribute('src', download);
               }}>
-              MY RESUME
+              {loadingResume ? 'Téléchargement...' : 'MY RESUME'}
               <img
                 src={download}
                 alt="download"

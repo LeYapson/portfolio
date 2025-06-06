@@ -90,6 +90,7 @@ const Navbar = () => {
               alt="menu"
               className="w-[34px] h-[34px] object-contain cursor-pointer"
               onClick={() => setToggle(!toggle)}
+              aria-label="Ouvrir le menu"
             />
           )}
         </div>
