@@ -4,15 +4,12 @@ import emailjs from '@emailjs/browser';
 import { styles } from '../styles';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
-import { send, sendHover, linkedinIcon } from '../assets'; // Ajoutez votre icône LinkedIn ici
+import Button from './ui/Button';
+import Card from './ui/Card';
 
 const Contact = () => {
   const formRef = useRef();
-  const [form, setForm] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -24,14 +21,12 @@ const Contact = () => {
     e.preventDefault();
     setLoading(true);
 
-    // Ajout de validation
     if (!form.name || !form.email || !form.message) {
       alert('Veuillez remplir tous les champs');
       setLoading(false);
       return;
     }
 
-    // Validation email basique
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(form.email)) {
       alert('Veuillez entrer une adresse email valide');
@@ -55,104 +50,145 @@ const Contact = () => {
       .then(
         () => {
           setLoading(false);
-          alert('Merci, je reviens vers vous dès que possible.');
-          setForm({
-            name: '',
-            email: '',
-            message: '',
-          });
+          alert('Merci ! Je reviens vers vous dès que possible.');
+          setForm({ name: '', email: '', message: '' });
         },
         (error) => {
           setLoading(false);
           console.log(error);
-          alert('Quelque chose s\'est mal passé, veuillez réessayer.');
+          alert('Une erreur est survenue, veuillez réessayer.');
         }
       );
   };
 
   return (
-    <div className="-mt-[8rem] xl:flex-row flex-col-reverse flex gap-10 overflow-hidden">
-      <motion.div
-        variants={slideIn('left', 'tween', 0.2, 1)}
-        className="flex-[0.75] bg-jet p-8 rounded-2xl"
-      >
-        <p className={styles.sectionSubText}>Prendre contact</p>
-        <h3 className={styles.sectionHeadTextLight}>Contact.</h3>
-
-        <form
-          ref={formRef}
-          onSubmit={handleSubmit}
-          className="mt-10 flex flex-col gap-6 font-poppins"
+    <div className="bg-gradient-to-br from-blue-600/5 via-white to-amber-500/5 
+      dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-12">
+      
+      <div className={`${styles.padding} max-w-4xl mx-auto relative z-0 flex flex-col lg:flex-row gap-6`}>
+        
+        {/* Section gauche - Informations */}
+        <motion.div
+          variants={slideIn('left', 'tween', 0.2, 1)}
+          className="flex-1 p-4"
         >
-          <label className="flex flex-col">
-            <span className="text-timberWolf font-medium mb-4">Ton nom</span>
-            <input
-              type="text"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              placeholder="Quel est ton nom?"
-              className="bg-eerieBlack py-4 px-6 placeholder:text-taupe text-timberWolf rounded-lg outline-none border-none font-medium"
-            />
-          </label>
-          <label className="flex flex-col">
-            <span className="text-timberWolf font-medium mb-4">Ton e-mail</span>
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="c'est quoi ton e-mail?"
-              className="bg-eerieBlack py-4 px-6 placeholder:text-taupe text-timberWolf rounded-lg outline-none border-none font-medium"
-            />
-          </label>
-          <label className="flex flex-col">
-            <span className="text-timberWolf font-medium mb-4">Ton message</span>
-            <textarea
-              rows="7"
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              placeholder="Quel est ton message?"
-              className="bg-eerieBlack py-4 px-6 placeholder:text-taupe text-timberWolf rounded-lg outline-none border-none font-medium resize-none"
-            />
-          </label>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+            Prenons contact
+          </p>
+          <h3 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
+            Contactez-moi
+          </h3>
 
-          <button
-            type="submit"
-            className="live-demo flex justify-center sm:gap-4 gap-3 sm:text-[20px] text-[16px] text-timberWolf font-bold font-beckman items-center py-5 whitespace-nowrap sm:w-[130px] sm:h-[50px] w-[100px] h-[45px] rounded-[10px] bg-night hover:bg-battleGray hover:text-eerieBlack transition duration-[0.2s] ease-in-out"
-            onMouseOver={() => {
-              document
-                .querySelector('.contact-btn')
-                .setAttribute('src', sendHover);
-            }}
-            onMouseOut={() => {
-              document.querySelector('.contact-btn').setAttribute('src', send);
-            }}
-          >
-            {loading ? 'Sending' : 'Send'}
-            <img
-              src={send}
-              alt="send"
-              className="contact-btn sm:w-[26px] sm:h-[26px] w-[23px] h-[23px] object-contain"
-            />
-          </button>
-        </form>
-      </motion.div>
+          <Card className="mt-4 p-4" gradient>
+            <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-4">
+              
+              <label className="flex flex-col">
+                <span className="text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">
+                  Votre nom
+                </span>
+                <input
+                  type="text"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder="Votre nom"
+                  className="bg-gray-50 dark:bg-gray-700 py-2 px-3 placeholder:text-gray-400 
+                    text-gray-800 dark:text-white rounded border border-gray-200 
+                    dark:border-gray-600 focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 
+                    outline-none transition-all text-sm"
+                />
+              </label>
 
-      <div className="flex flex-col items-center mt-10">
-        <a
-          href="https://www.linkedin.com/in/theau-yapi/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center justify-center"
+              <label className="flex flex-col">
+                <span className="text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">
+                  Votre email
+                </span>
+                <input
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="votre@email.com"
+                  className="bg-gray-50 dark:bg-gray-700 py-2 px-3 placeholder:text-gray-400 
+                    text-gray-800 dark:text-white rounded border border-gray-200 
+                    dark:border-gray-600 focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 
+                    outline-none transition-all text-sm"
+                />
+              </label>
+
+              <label className="flex flex-col">
+                <span className="text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">
+                  Votre message
+                </span>
+                <textarea
+                  rows={4}
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  placeholder="Votre message..."
+                  className="bg-gray-50 dark:bg-gray-700 py-2 px-3 placeholder:text-gray-400 
+                    text-gray-800 dark:text-white rounded border border-gray-200 
+                    dark:border-gray-600 focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 
+                    outline-none resize-none transition-all text-sm"
+                />
+              </label>
+
+              <Button
+                type="submit"
+                variant="primary"
+                size="sm"
+                disabled={loading}
+                icon={loading ? "⏳" : "📧"}
+                className="w-full"
+              >
+                {loading ? 'Envoi...' : 'Envoyer'}
+              </Button>
+            </form>
+          </Card>
+
+          {/* Liens sociaux */}
+          <div className="mt-4 flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => window.open('https://linkedin.com/in/theau-yapi', '_blank')}
+              icon="💼"
+            >
+              LinkedIn
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => window.open('https://github.com/LeYapson', '_blank')}
+              icon="👨‍💻"
+            >
+              GitHub
+            </Button>
+          </div>
+        </motion.div>
+
+        {/* Section droite - Animation ou image */}
+        <motion.div
+          variants={slideIn('right', 'tween', 0.2, 1)}
+          className="flex-1 lg:h-auto md:h-[300px] h-[200px]"
         >
-          <img
-            src={linkedinIcon} // Assurez-vous d'importer votre icône LinkedIn
-            alt="LinkedIn"
-            className="w-20 h-20 object-contain"
-          />
-        </a>
+          <div className="w-full h-full bg-gradient-to-br from-blue-600/10 to-amber-500/10 
+            rounded-lg flex items-center justify-center relative overflow-hidden">
+            
+            <div className="text-center z-10">
+              <motion.div
+                className="text-3xl mb-2"
+                animate={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                📧
+              </motion.div>
+              <p className="text-gray-600 dark:text-gray-300 text-sm">
+                Contactez-moi !
+              </p>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );

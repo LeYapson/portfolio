@@ -7,5 +7,17 @@ import Experience from './Experience';
 import Projects from './Projects';
 import Contact from './Contact';
 import Loader from './Loader';
+import LoaderFallback from './LoaderFallback';
 
-export { Hero, Navbar, About, Tech, Experience, Projects, Contact, BallCanvas, Loader };
+export { 
+  Hero, 
+  Navbar, 
+  About, 
+  Tech, 
+  Experience, 
+  Projects, 
+  Contact, 
+  BallCanvas, 
+  Loader,
+  LoaderFallback 
+};

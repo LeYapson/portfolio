@@ -1,47 +1,60 @@
-import React, { Suspense, lazy } from 'react';
+import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import { Navbar, Hero, About } from './components';
-import LoaderFallback from './components/LoaderFallback'; // Importation du nouveau composant
-
-// Chargement paresseux des composants moins critiques
-const Tech = lazy(() => import('./components/Tech'));
-const Projects = lazy(() => import('./components/Projects'));
-const Experience = lazy(() => import('./components/Experience'));
-const Contact = lazy(() => import('./components/Contact'));
+import { About, Contact, Experience, Hero, Navbar, Tech, Projects } from './components';
 
 const App = () => {
   return (
     <BrowserRouter>
-      <div className="relative z-0">
-        <div>
-          <Navbar />
-          <Hero />
-        </div>
+      {/* Container principal avec le même fond que le Hero */}
+      <div className="relative min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-gray-900 dark:via-purple-900/20 dark:to-blue-900/20">
         
-        <div className="bg-about bg-cover bg-center bg-no-repeat">
-          <About />
+        {/* Motif de points sur tout le site */}
+        <div className="fixed inset-0 opacity-10 pointer-events-none z-0">
+          <div 
+            className="w-full h-full"
+            style={{
+              backgroundImage: `radial-gradient(circle at 2px 2px, #6366f1 1px, transparent 0)`,
+              backgroundSize: '40px 40px'
+            }}
+          />
         </div>
 
-        <Suspense fallback={<LoaderFallback />}>
-          <div className="bg-tech bg-cover bg-center bg-no-repeat pb-10">
-            <Tech />
-          </div>
-
-          <Projects />
-
+        {/* Particules flottantes globales */}
+        {[...Array(12)].map((_, i) => (
           <div
-            className="bg-experience bg-cover bg-center bg-no-repeat 
-              rounded-tl-[150px] rounded-br-[150px]">
-            <div
-              className="bg-experienceLight bg-cover bg-center 
-              bg-no-repeat rounded-tl-[150px] rounded-br-[130px]">
-              <Experience />
-            </div>
-          </div>
-          <div className="relative z-0">
+            key={i}
+            className="fixed w-2 h-2 bg-blue-400/30 rounded-full pointer-events-none z-0"
+            style={{
+              left: `${5 + i * 8}%`,
+              top: `${10 + (i % 4) * 25}%`,
+              animation: `float-${i % 3} ${4 + i * 0.3}s ease-in-out infinite`,
+            }}
+          />
+        ))}
+
+        <Navbar />
+        
+        <div className="relative z-10">
+          <section id="hero">
+            <Hero />
+          </section>
+          
+          <section id="about">
+            <About />
+          </section>
+          
+          <section id="projects">
+            <Projects />
+          </section>
+          
+          <section id="experience">
+            <Experience />
+          </section>
+          
+          <section id="contact">
             <Contact />
-          </div>
-        </Suspense>
+          </section>
+        </div>
       </div>
     </BrowserRouter>
   );

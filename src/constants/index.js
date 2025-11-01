@@ -38,7 +38,7 @@ export const navLinks = [
     title: 'Projets',
   },
   {
-    id: 'work',
+    id: 'experience',
     title: 'Experiences',
   },
   {
@@ -140,7 +140,7 @@ const experiences = [
     icon: microverse,
     iconBg: '#333333',
     date: 'Fev 2024 - Jun 2024',
-    description : 'De la période de Février a Juin, j\'ai été mentor junior en informatique à Montpellier Ynov Campus. J\'ai aidé les étudiants à résoudre des problèmes de programmation, à comprendre les concepts de base de la programmation et à améliorer leurs compétences en développement web. J\'ai également organisé des ateliers et des séances de tutorat pour les étudiants qui avaient besoin d\'aide supplémentaire. C\'était une expérience enrichissante qui m\'a permis de partager mes connaissances et d\'aider les autres à réussir dans le domaine de l\'informatique.',
+    description: 'De la période de Février a Juin, j\'ai été mentor junior en informatique à Montpellier Ynov Campus. J\'ai aidé les étudiants à résoudre des problèmes de programmation, à comprendre les concepts de base de la programmation et à améliorer leurs compétences en développement web. J\'ai également organisé des ateliers et des séances de tutorat pour les étudiants qui avaient besoin d\'aide supplémentaire. C\'était une expérience enrichissante qui m\'a permis de partager mes connaissances et d\'aider les autres à réussir dans le domaine de l\'informatique.',
   },
   {
     title: 'Developpeur Web front-end',
@@ -170,98 +170,64 @@ const experiences = [
 
 const projects = [
   {
-    id: 'project-1',
-    name: 'Car With A Gun',
-    description: 'Un jeu top-down shooter construit avec godot et gdscript.',
+    name: "Portfolio React",
+    description: "Mon portfolio personnel développé avec React, Tailwind CSS et Framer Motion. Il présente mes projets, expériences et compétences avec un design moderne et des animations fluides.",
     tags: [
       {
-        name: 'godot',
-        color: 'blue-text-gradient',
+        name: "react",
+        color: "from-blue-400 to-blue-600",
       },
       {
-        name: 'gdscript',
-        color: 'green-text-gradient',
+        name: "tailwind",
+        color: "from-cyan-400 to-blue-500",
+      },
+      {
+        name: "framer-motion",
+        color: "from-purple-400 to-pink-500",
       },
     ],
-    image: komikult,
-    repo: 'https://github.com/LeYapson/Car_With_A_Gun',
+    image: komikult, // Utilisez une image existante ou ajoutez votre image
+    source_code_link: "https://github.com/LeYapson/portfolio",
   },
   {
-    id: 'project-2',
-    name: 'Pascal BOT',
-    description: 'Un bot discord de modération et de quiz construit avec python et discord.py.',
+    name: "Application de Gestion", 
+    description: "Application de gestion développée en C# et .NET avec base de données SQL Server. Interface utilisateur moderne avec fonctionnalités CRUD complètes.",
     tags: [
       {
-        name: 'python',
-        color: 'blue-text-gradient',
+        name: "csharp",
+        color: "from-purple-500 to-blue-600",
       },
       {
-        name: 'discord',
-        color: 'green-text-gradient',
+        name: "dotnet",
+        color: "from-blue-500 to-purple-600",
+      },
+      {
+        name: "sql-server",
+        color: "from-orange-400 to-red-500",
       },
     ],
-    image: pascal,
-    repo: 'https://github.com/LeYapson/PASCAL_BOT_V1.0',
+    image: leaderboard, // Utilisez une image existante ou ajoutez votre image
+    source_code_link: "https://github.com/LeYapson/gestion-app",
   },
   {
-    id: 'project-3',
-    name: 'Abdel Run',
-    description:
-      'Un jeu de défilement infini construit avec golang et raylib-go.',
+    name: "Jeu Godot",
+    description: "Jeu 2D développé avec le moteur Godot, incluant système de score, animations et effets sonores. Mécaniques de jeu fluides et interface utilisateur intuitive.",
     tags: [
       {
-        name: 'golang',
-        color: 'blue-text-gradient',
+        name: "godot",
+        color: "from-blue-500 to-purple-600",
       },
       {
-        name: 'raylib-go',
-        color: 'green-text-gradient',
+        name: "gdscript",
+        color: "from-green-400 to-blue-500",
+      },
+      {
+        name: "gamedev",
+        color: "from-pink-400 to-red-500",
       },
     ],
-    image: leaderboard,
-    repo: 'https://github.com/LeYapson/Abdel_Run',
-  },
-  {
-    id: 'project-4',
-    name: 'Forynov',
-    description: 'Il s\'agit d\'un site de forum construit avec golang, SqLite et bootstrap.',
-    tags: [
-      {
-        name: 'golang',
-        color: 'blue-text-gradient',
-      },
-      {
-        name: 'sqlite',
-        color: 'green-text-gradient',
-      },
-      {
-        name: 'bootstrap',
-        color: 'pink-text-gradient',
-      },
-    ],
-    image: math,
-    repo: 'https://github.com/LeYapson/forynov',
-  },
-  {
-    id: 'project-5',
-    name: 'Elifes',
-    description: 'stage de développement web pour la refonte graphique du site web de l\'entreprise',
-    tags: [
-      {
-        name: 'Bootstrap',
-        color: 'blue-text-gradient',
-      },
-      {
-        name: 'HTML',
-        color: 'green-text-gradient',
-      },
-      {
-        name: 'CSS',
-        color: 'pink-text-gradient',
-      },
-    ],
-    image: movie,
-    repo: 'https://github.com/LeYapson/portfolio/blob/main/src/components/files/StageElife.pdf',
+    image: math, // Utilisez une image existante ou ajoutez votre image
+    source_code_link: "https://github.com/LeYapson/godot-game",
   },
 ];
 

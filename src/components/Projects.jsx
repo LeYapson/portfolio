@@ -5,6 +5,7 @@ import { styles } from '../styles';
 import { github } from '../assets';
 import { fadeIn, textVariant, staggerContainer } from '../utils/motion';
 import axios from 'axios';
+import { projects } from '../constants';
 
 const ProjectCard = ({
   id,
@@ -15,68 +16,59 @@ const ProjectCard = ({
   index,
   active,
   handleClick,
+  tags = [], // Ajout d'une valeur par défaut
 }) => {
   return (
     <motion.div
-      variants={fadeIn('right', 'spring', index * 0.5, 0.75)}
-      className={`relative ${
-        active === id ? 'lg:flex-[3.5] flex-[10]' : 'lg:flex-[0.5] flex-[2]'
-      } flex items-center justify-center min-w-[170px] 
-      h-[420px] cursor-pointer card-shadow`}
-      onClick={() => handleClick(id)}>
-      <div
-        className="absolute top-0 left-0 z-10 bg-jetLight 
-      h-full w-full opacity-[0.5] rounded-[24px]"></div>
+      variants={fadeIn('up', 'spring', index * 0.5, 0.75)}
+      className="group relative"
+    >
+      <div className="bg-white/30 dark:bg-white/10 backdrop-blur-sm p-5 rounded-2xl border border-white/40 hover:border-blue-400/60 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-blue-500/20 sm:w-[360px] w-full">
+        
+        <div className="relative w-full h-[230px]">
+          <img
+            src={image}
+            alt="project_image"
+            className="w-full h-full object-cover rounded-2xl"
+          />
 
-      <img
-        src={image}
-        alt={name}
-        className="absolute w-full h-full object-cover rounded-[24px]"
-      />
+          <div className="absolute inset-0 flex justify-end m-3 card-img_hover">
+            <div
+              onClick={() => window.open(repo, '_blank')}
+              className="bg-black/80 w-10 h-10 rounded-full flex justify-center items-center cursor-pointer hover:bg-black/90 transition-colors duration-300"
+            >
+              <img
+                src={github}
+                alt="source code"
+                className="w-1/2 h-1/2 object-contain"
+              />
+            </div>
+          </div>
+        </div>
 
-      {active !== id ? (
-        <div className="flex items-center justify-start pr-[4.5rem]">
-          <h3
-            className="font-extrabold font-beckman uppercase w-[200px] h-[30px] 
-        whitespace-nowrap sm:text-[27px] text-[18px] text-timberWolf tracking-[1px]
-        absolute z-0 lg:bottom-[7rem] lg:rotate-[-90deg] lg:origin-[0,0]
-        leading-none z-20">
+        <div className="mt-5">
+          <h3 className="text-gray-800 dark:text-white font-bold text-[24px] group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
             {name}
           </h3>
+          <p className="mt-2 text-gray-600 dark:text-gray-300 text-[14px] leading-relaxed">
+            {description}
+          </p>
         </div>
-      ) : (
-        <>
-          <div
-            className="absolute bottom-0 p-8 justify-start w-full 
-            flex-col bg-[rgba(122,122,122,0.5)] rounded-b-[24px] z-20">
-            <div className="absolute inset-0 flex justify-end m-3">
-              <div
-                onClick={() => window.open(repo, '_blank')}
-                className="bg-night sm:w-11 sm:h-11 w-10 h-10 rounded-full 
-                  flex justify-center items-center cursor-pointer
-                  sm:opacity-[0.9] opacity-[0.8]">
-                <img
-                  src={github}
-                  alt="source code"
-                  className="w-4/5 h-4/5 object-contain"
-                />
-              </div>
-            </div>
 
-            <h2
-              className="font-bold sm:text-[32px] text-[24px] 
-              text-timberWolf uppercase font-beckman sm:mt-0 -mt-[1rem]">
-              {name}
-            </h2>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {tags.map((tag) => (
             <p
-              className="text-silver sm:text-[14px] text-[12px] 
-              max-w-3xl sm:leading-[24px] leading-[18px]
-              font-poppins tracking-[1px]">
-              {description}
+              key={`${name}-${tag.name}`}
+              className={`text-[14px] font-medium px-3 py-1 rounded-full bg-gradient-to-r ${tag.color} text-white shadow-lg`}
+            >
+              #{tag.name}
             </p>
-          </div>
-        </>
-      )}
+          ))}
+        </div>
+
+        {/* Effet de brillance au hover */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 rounded-2xl pointer-events-none" />
+      </div>
     </motion.div>
   );
 };
@@ -167,77 +159,107 @@ const Projects = () => {
   }, [username]);
 
   return (
-    <div className="-mt-[6rem]">
-      <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} `}>Études de cas</p>
-        <h2 className={`${styles.sectionHeadTextLight}`}>Projets.</h2>
-      </motion.div>
-
-      <div className="w-full flex">
-        <motion.p
-          variants={fadeIn('', '', 0.1, 1)}
-          className="mt-4 text-taupe text-[18px] max-w-3xl leading-[30px]">
-          Ces projets démontrent mon expertise avec des exemples pratiques de mon travail,
-          y compris de brèves descriptions et des liens vers les dépôts de code.
-          Ils illustrent ma capacité à relever des défis complexes et à m'adapter à diverses technologies.
-        </motion.p>
-      </div>
-
-      {loading ? (
-        <div className="flex justify-center items-center min-h-[50vh]">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-white"></div>
-        </div>
-      ) : error ? (
-        <div className="text-center py-10">
-          <p className="text-red-400 mb-4">{error}</p>
-          <button 
-            onClick={() => fetchProjects(true)}
-            className="px-4 py-2 bg-jetLight text-white rounded-md hover:bg-battleGray transition-colors"
-          >
-            Réessayer sans utiliser le cache
-          </button>
-        </div>
-      ) : githubProjects.length === 0 ? (
-        <div className="text-center py-10">
-          <p className="text-yellow-400 mb-4">Aucun projet trouvé sur GitHub</p>
-          <button 
-            onClick={() => fetchProjects(true)}
-            className="px-4 py-2 bg-jetLight text-white rounded-md hover:bg-battleGray transition-colors"
-          >
-            Réessayer
-          </button>
-        </div>
-      ) : (
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: false, amount: 0.25 }}
-          className={`${styles.innerWidth} mx-auto flex flex-col`}>
-          <div className="mt-[50px] flex lg:flex-row flex-col min-h-[70vh] gap-5">
-            {githubProjects.map((project, index) => (
-              <ProjectCard
-                key={project.id}
-                index={index}
-                {...project}
-                active={active}
-                handleClick={setActive}
-              />
-            ))}
-          </div>
-        </motion.div>
-      )}
+    <div className="relative min-h-screen flex items-center justify-center py-20">
       
-      {/* Bouton GitHub séparé des conditions de chargement */}
-      <div className="w-full flex justify-center mt-10">
-        <motion.button
-          variants={fadeIn('up', 'spring', 0.5, 1)}
-          className="bg-jetLight hover:bg-battleGray text-white font-beckman py-3 px-8 rounded-lg flex items-center gap-3 transition-colors duration-300"
-          onClick={() => window.open(`https://github.com/${username}`, '_blank')}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6">
+        
+        <div className="text-center mb-16">
+          <motion.div
+            className="flex items-center justify-center gap-4 mb-6"
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <motion.span
+              className="text-3xl"
+              animate={{ rotate: [0, 10, -10, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              🚀
+            </motion.span>
+            <span className="text-xl font-semibold text-gray-700 dark:text-gray-200 bg-white/60 dark:bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/40">
+              MES RÉALISATIONS
+            </span>
+          </motion.div>
+
+          <motion.h2
+            className="text-4xl md:text-6xl font-black text-gray-800 dark:text-white mb-8 font-poppins"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            Mes{' '}
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              projets
+            </span>
+          </motion.h2>
+
+          <motion.p
+            className="text-lg text-gray-700 dark:text-gray-200 max-w-4xl mx-auto leading-relaxed bg-white/40 dark:bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/40"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            Voici une sélection de mes projets qui reflètent ma passion pour le{' '}
+            <span className="font-semibold text-blue-600">développement créatif</span>. 
+            Chaque projet raconte une histoire unique et démontre mes compétences en{' '}
+            <span className="font-semibold text-purple-600">résolution de problèmes</span> et{' '}
+            <span className="font-semibold text-pink-600">innovation technique</span>.
+          </motion.p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+          {githubProjects.map((project, index) => (
+            <ProjectCard
+              key={project.id}
+              index={index}
+              {...project}
+              active={active}
+              handleClick={setActive}
+            />
+          ))}
+        </div>
+
+        {/* Section "Voir plus de projets" */}
+        <motion.div
+          className="mt-16 text-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.8 }}
+          viewport={{ once: true }}
         >
-          <img src={github} alt="GitHub" className="w-6 h-6" />
-          <span>Voir tous mes projets sur GitHub</span>
-        </motion.button>
+          <motion.div
+            className="bg-white/40 dark:bg-white/10 backdrop-blur-sm p-8 rounded-2xl border border-white/40 inline-block"
+            whileHover={{ scale: 1.02 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <motion.p 
+              className="text-lg font-semibold text-gray-700 dark:text-gray-200 mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1 }}
+              viewport={{ once: true }}
+            >
+              Envie de voir plus de projets ?
+            </motion.p>
+            
+            <motion.button
+              onClick={() => window.open('https://github.com/LeYapson', '_blank')}
+              className="px-6 py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full font-semibold hover:from-purple-600 hover:to-blue-500 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25"
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <span className="flex items-center gap-2">
+                <span>🔗</span>
+                Voir sur GitHub
+              </span>
+            </motion.button>
+          </motion.div>
+        </motion.div>
+
       </div>
     </div>
   );
