@@ -1,17 +1,52 @@
-# Bienvenue sur mon Portfolio
+# Portfolio de Théau Yapi
 
-Bienvenue sur mon portfolio ! C'est ici que vous trouverez une collection de mes projets, expériences et compétences dans le domaine de l'informatique. Je suis Théau Yapi, Développeur logiciel.
+Bienvenue sur mon portfolio ! Ce projet met en avant mes compétences, mes expériences et mes projets dans le domaine du développement logiciel. Il est conçu pour être moderne, interactif et refléter ma personnalité.
 
-## À propos de moi
+## 🚀 Démo en ligne
 
-Je suis passionné par jeux vidéos, et j'ai une expérience approfondie dans dans le développement logiciel. Mon objectif est de me forger une expertise solide dans ce domaine.
+Vous pouvez consulter le portfolio en ligne ici : [Portfolio de Théau Yapi](https://theauyapi-portfolio.netlify.app)
 
-## Comment naviguer sur ce portfolio ?
+---
 
-Ce portfolio est hébergé sur GitHub Pages. Vous pouvez accéder au site web en suivant ce lien : https://theauyapi-portfolio.netlify.app. Sur le site, vous trouverez les détails de mes projets, mon expérience professionnelle et mes compétences.
+## 🛠️ Technologies utilisées
 
-## Comment me contacter
+- **Frontend** : React, Tailwind CSS, Framer Motion
+- **3D** : Three.js, @react-three/fiber, @react-three/drei
+- **Outils** : Vite, ESLint, PostCSS
+- **API** : EmailJS pour le formulaire de contact
+- **Hébergement** : Netlify
 
-Si vous souhaitez discuter d'une opportunité de collaboration ou si vous avez des questions, n'hésitez pas à utiliser le formulaire de contact disponible sur mon site. Je répondrai à votre message dès que possible.
+---
 
-Je suis ouvert aux nouvelles opportunités et toujours enthousiaste à l'idée de contribuer à des projets passionnants. Merci de votre visite !
+## 📂 Structure du projet
+
+Voici un aperçu de la structure des fichiers de mon projet :
+
+```
+mon-portfolio/
+├── public/
+│   ├── assets/
+│   │   ├── images/
+│   │   └── fonts/
+│   └── index.html
+├── src/
+│   ├── components/
+│   │   ├── Header.jsx
+│   │   ├── Footer.jsx
+│   │   └── ProjectCard.jsx
+│   ├── pages/
+│   │   ├── Home.jsx
+│   │   ├── About.jsx
+│   │   └── Contact.jsx
+│   ├── App.jsx
+│   └── main.jsx
+├── .gitignore
+├── package.json
+└── vite.config.js
+```
+
+## 📞 Contact
+
+Pour toute question ou proposition, n'hésitez pas à me contacter via le formulaire de contact de mon portfolio. Je suis toujours ouvert aux nouvelles opportunités et collaborations.
+
+Merci de votre visite et à bientôt, je l'espère !
